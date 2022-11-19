@@ -13,11 +13,11 @@
 
         /*------------這像是react的useState方法--------------*/
         let state = {   //因為狀態會改變因設為let
-            like: true
-            // color: 'red'
+            like: true,
+            color: ''
         }
         const setState = function(newState){
-            state = newState;
+            state = {...state, ...newState}      //增加擴展性
             render()
         }
         /*--------------------------------------------------*/
@@ -26,17 +26,18 @@
             if(state.like){
                 // 喜歡的狀態
                 like.innerHTML = '喜歡';
-                like.style.color = 'red';
+                like.style.color = state.color;
             }else{
                 // 已讚的狀態
                 like.innerHTML = '已讚';
-                like.style.color = 'blue';
+                like.style.color = state.color;
             }
         }
         /*--------------------------------------------------*/
         like.addEventListener('click', function(){
             setState({
-                like : !state.like
+                like : !state.like,
+                color: state.like ? 'red' : 'blue'
             })
         })
     </script>
