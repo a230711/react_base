@@ -12,9 +12,9 @@
         const like = document.getElementById('like');
 
         /*------------這像是react的useState方法--------------*/
-        const state = {
-            like: false,
-            color: 'red'
+        let state = {   //因為狀態會改變因設為let
+            like: true
+            // color: 'red'
         }
         const setState = function(newState){
             state = newState;
