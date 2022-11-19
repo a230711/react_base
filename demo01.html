@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ---------------(喜歡)是數據---------------- -->
+    <button id="like">喜歡</button>
+    <!-- -------------------------------------- -->
+    <script>
+        /*---------------介面()----------------*/
+        const like = document.getElementById('like');
+        /*----------------------------------------*/
+        /*---------------操作(修改)----------------*/
+        function likebtn(){
+            if(like.innerHTML == '已點擊'){
+                like.innerHTML = '喜歡';
+                like.style.color = 'blue';
+            }else{
+                like.innerHTML = '已點擊';
+                like.style.color = 'red';
+            }
+        }
+        like.addEventListener('click',likebtn);
+        /*----------------------------------------*/
+    </script>
+</body>
+</html>
