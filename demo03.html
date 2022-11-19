@@ -8,8 +8,12 @@
 </head>
 <body>
     <input type="text" id="input">
+    <button id="btn">Click</button>
+    <p id="textContext"></p>
     <script>
         const input = document.getElementById('input');
+        const btn = document.getElementById('btn');
+        const text = document.getElementById('textContext');
 
         /*------------這像是react的useState方法--------------*/
         let state = {
@@ -23,14 +27,17 @@
         /*--------------------------------------------------*/
         /*----------把狀態改為當前狀態(也就是渲染)--------------*/
         const render = function(){
-            input.value = state.value
+            input.value = state.value;
         }
         /*--------------------------------------------------*/
-        
-        input.addEventListener('input', function(){
-            setState({value: this.value})
 
-            render()
+        input.addEventListener('input', function(){
+            setState({value: this.value});
+            render1();
+        })
+        btn.addEventListener('click', function(){
+            text.innerHTML = state.value;
+            setState(state.value = '');
         })
     </script>
 </body>
