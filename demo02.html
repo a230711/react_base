@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="like">喜歡</button>
+    <script>
+        const like = document.getElementById('like');
+
+        /*------------這像是react的useState方法--------------*/
+        const state = {
+            like: false,
+            color: 'red'
+        }
+        const setState = function(newState){
+            state = newState;
+            render()
+        }
+        /*--------------------------------------------------*/
+        /*----------把狀態改為當前狀態(也就是渲染)--------------*/
+        const render = function(){
+            if(state.like){
+                // 喜歡的狀態
+                like.innerHTML = '喜歡';
+                like.style.color = 'red';
+            }else{
+                // 已讚的狀態
+                like.innerHTML = '已讚';
+                like.style.color = 'blue';
+            }
+        }
+        /*--------------------------------------------------*/
+        like.addEventListener('click', function(){
+            setState({
+                like : !state.like
+            })
+        })
+    </script>
+</body>
+</html>
