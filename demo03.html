@@ -29,16 +29,16 @@
         const render = function(){
             input.value = state.value;
         }
-        /*--------------------------------------------------*/
-
-        input.addEventListener('input', function(){
-            setState({value: this.value});
-            render1();
-        })
         btn.addEventListener('click', function(){
             text.innerHTML = state.value;
             setState(state.value = '');
         })
+        /*--------------------------------------------------*/
+
+        input.addEventListener('input', function(){
+            setState({value: this.value});
+        })
+        
     </script>
 </body>
 </html>
