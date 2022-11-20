@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" />
+    <p id="error" style="color:red;">字數不能超過10個字</p>
+    <script>
+        const input = document.getElementById('input');
+        const errorMsg = document.getElementById('error');
+
+        let state = {
+            value: "",
+            error: false
+        }
+
+        const setState = function(newState){
+            state = {...state, ...newState};
+            render()
+        }
+
+        const render = function(){
+            input.value = state.value;
+            if(state.error){
+                errorMsg.style.display = 'block';
+            }else{
+                errorMsg.style.display = 'none';
+            }
+        }
+
+        const handleInput = function(){
+            const val = this.value;
+            if(val.length < 10){
+                setState({
+                    value: val,
+                    error: false
+                });
+            }else{
+                setState({
+                    error: true,
+                });
+            }
+        }
+
+        input.addEventListener('input', handleInput)
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Like</button>
+    <script>
+        const btn = document.getElementById('btn');
+
+        let state = {
+            value: true,
+            color: 'blue'
+        }
+        const setState = function(newState){
+            state = {...state, ...newState};
+
+            render();
+        }
+        const render = function(){
+            if(state.value){
+                btn.innerHTML = 'Like';
+                btn.style.color = state.color;
+            }else{
+                btn.innerHTML = 'Thank';
+                btn.style.color = state.color;
+            }
+        }
+        btn.addEventListener('click',function(){
+            setState({
+                value: !state.value,
+                color: state.value ? 'red' : 'blue'
+            })
+            render()
+        })
+    </script>
+</body>
+</html>
