@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" />
+    <button id="btn">Click</button>
+    <p id="text"></p>
+    <script>
+        const input = document.getElementById('input');
+        const btn = document.getElementById('btn');
+        const text = document.getElementById('text');
+
+        let state = {
+            value: "",
+            num: 0
+        }
+        const setState = function(newState){
+            state = {...state, ...newState};
+            // console.log(state);
+            render()
+        }
+
+        const render = function(){
+            input.value = state.value;
+
+        }
+        const inputtext = function(){
+            const val = this.value;
+            setState({
+                value: val,
+                num: val.length
+            })
+        }
+        const testbtn = function(){
+            text.innerHTML = `你現在輸入${state.num}個字`;
+        }
+
+        input.addEventListener('input', inputtext);
+        btn.addEventListener('click', testbtn);
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        const root = document.getElementById('root');
+
+        let state = {
+            like: false
+        }
+
+        const setState = function(newState){
+            state = {...state, ...newState};
+            render()
+        }
+
+        const handeClick = function(){
+            setState(
+                {
+                    like : !state.like
+                }
+            )
+        }
+
+        const render = function(){
+            root.innerHTML = 
+            `<button type="button" style="color: ${state.like ? "red" : "black"};" onclick=handeClick()>
+                ${state.like ? "已讚":"喜歡"}
+            </button>`
+        }
+
+        render()
+    
+
+    </script>
+</body>
+</html>
