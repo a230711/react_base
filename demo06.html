@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        const root = document.getElementById('root');
+
+        //Component提供繼承
+        class Component{
+            setState(newState){
+                this.state = {
+                    ...this.state,
+                    ...newState
+                }
+            }
+        }
+
+        class Button extends Component{   //extends Component繼承方法
+            constructor(){               
+                super()                   //super()繼承方法
+                this.state = {
+                    like : true
+                }
+            }
+            render(){
+                const state = this.state
+                return `
+                    <button type="button" style="color: ${state.like ? "red" : "black"};">
+                        ${state.like ? "已讚":"喜歡"}
+                    </button>
+                `
+            }
+        }
+
+        class Title extends Component{  //extends Component繼承方法
+            constructor(){
+                super()                 //super()繼承方法
+                this.state = {
+                    text : "這是一個標題"
+                }
+            }
+            render(){
+                return `<h1>${this.state.text}</h1>`
+            }
+        }
+
+        class Wrap{
+            constructor(){
+
+            }
+            render(){
+                return `
+                    wrap
+                    ${new Title().render()}
+                    ${new Title().render()}
+                    ${new Title().render()}
+                    ${new Title().render()}
+                    ${new Title().render()}
+                    ${new Button().render()}
+                `
+            }
+        }
+
+        root.innerHTML = new Wrap().render()
+    </script>
+</body>
+</html>
